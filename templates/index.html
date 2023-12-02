@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <title>Hotel</title>
+</head>
+<body>
+    <main id="cuerpo">
+        <article>
+
+            <h1>Clientes</h1>
+            <form action="/buscarCliente" method="post">
+                <input type="text" id="cedula_reserva" name="cedula_reserva" pattern="[A-Za-z0-9]{4,16}" maxlength="16" minlength="4" placeholder="Cedula / Reserva" required>
+                <button type="submit"><i class="lni lni-search-alt"></i></button>
+            </form>
+
+            {% if mensaje %}
+            <p>{{mensaje}}</p>
+            {% endif %}
+
+            {% if cliente %}
+            <div class="card">
+                {% if not cliente[0] == None %}
+                <p>Codigo: {{cliente[0]}}</p>
+                {% endif %}
+                <p>Cedula: {{cliente[1]}}</p>
+                <p>Nombres: {{cliente[2]}}</p>
+                <p>Apellidos: {{cliente[3]}}</p>
+                <p>Telefono: {{cliente[4]}}</p>
+                {% if not cliente[0] == None %}
+                <p>Fecha de Reserva: {{cliente[5]}}</p>
+                {% endif %}
+            </div>
+            <hr>
+            {% endif %}
+
+        </article>
+
+        <article>
+
+            <h1>Productos</h1>
+            <form action="/buscarProducto" method="post">
+                <input type="text" id="bus_producto" name="bus_producto" pattern="[a-zA-Z0-9 ]{2,15}" maxlength="15" minlength="2" placeholder="Palabra / Código producto" required>
+                <button type="submit"><i class="lni lni-search-alt"></i></button>
+            </form>
+            
+<!--             {% if producto %}
+            {% for resul in producto %}
+            <div class="card">
+                <p>Codigo de Barras: {{resul[0]}}</p>
+                <p>Nombre del Producto: {{resul[1]}}</p>
+                <p>Categoria: {{resul[2]}}</p>
+            </div>
+            <hr>
+            {% endfor %}
+            {% endif %} -->
+
+        </article>
+    </main>
+</body>
+</html>
